@@ -1,4 +1,4 @@
-![cf](https://i.imgur.com/7v5ASc8.png) 21: React Tooling
+![cf](https://i.imgur.com/7v5ASc8.png) 21: React Tooling - Cowsay Browser 
 ======
 
 ## Submission Instructions
@@ -27,6 +27,7 @@
 * `webpack.config.js`
 * `src/**`
   * `src/main.js`
+  * `src/index.html`
   * `src/style`
   * `src/style/main.scss`
 
