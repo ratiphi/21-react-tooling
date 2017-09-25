@@ -17,7 +17,10 @@ class App extends React.Component {
 
   handleClick(e) {
     this.setState(prevState => {
-      return {content: cowsay.say({ text: faker.lorem.sentence(), f: 'dragon' })};
+      return {content: cowsay.say({
+        text: faker.lorem.sentence(),
+        f: 'ghostbusters'}),
+      };
     });
   }
 
