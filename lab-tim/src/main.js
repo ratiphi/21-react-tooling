@@ -35,17 +35,6 @@ class App extends React.Component {
     });
   }
 
-  // handleChange(e) {
-  //   let current = e.target.value;
-  //   let text = faker.hacker.phrase();
-  //   this.setState(prevState => {
-  //     return {current, content: cowsay.say({
-  //       text,
-  //       f: current}),
-  //     };
-  //   });
-  // }
-
   render() {
     return (
       <div className="application">
