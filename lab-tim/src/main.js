@@ -9,20 +9,42 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      content: null,
+      cows: [],
+      current: '',
+      content: cowsay.say({text: 'Click the button or select an option ...'}),
     };
 
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentWillMount() {
+    cowsay.list((err, cows) => {
+      let current = cows[0];
+      this.setState({cows, current});
+    });
+  }
+
   handleClick(e) {
+    let current = e.target.value ? e.target.value : this.state.current;
+    let text = faker.hacker.phrase();
     this.setState(prevState => {
-      return {content: cowsay.say({
-        text: faker.lorem.sentence(),
-        f: 'ghostbusters'}),
+      return {current, content: cowsay.say({
+        text,
+        f: current}),
       };
     });
   }
+
+  // handleChange(e) {
+  //   let current = e.target.value;
+  //   let text = faker.hacker.phrase();
+  //   this.setState(prevState => {
+  //     return {current, content: cowsay.say({
+  //       text,
+  //       f: current}),
+  //     };
+  //   });
+  // }
 
   render() {
     return (
@@ -30,8 +52,18 @@ class App extends React.Component {
         <header>
           <h1>Generate Cowsay Lorem</h1>
         </header>
+        <select onChange={this.handleClick}>
+          {this.state.cows.map((cow, i) => {
+            return <option key={i} value={cow}>{cow}</option>;
+          })}
+        </select>
         <button onClick={this.handleClick}>Click</button>
-        <pre>{this.state.content}</pre>
+
+        <pre>
+          <code>
+            {this.state.content}
+          </code>
+        </pre>
       </div>
     );
   }
